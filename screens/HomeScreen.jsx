@@ -2,18 +2,14 @@
 
 import * as React from 'react';
 import { Dimensions, View, Text } from 'react-native';
-
-images: [
-    "https://source.unsplash.com/1024x768/?nature",
-    "https://source.unsplash.com/1024x768/?water",
-    "https://source.unsplash.com/1024x768/?girl",
-    "https://source.unsplash.com/1024x768/?tree", // Network image         // Local image
-]
+import { CustomSlider } from '../components';
+import data from '../data/dummy'
 
 const HomeScreen = () => {
     const width = Dimensions.get('window').width;
     return (
         <>
+            <CustomSlider data={data}/>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Home Screen</Text>
             </View>
