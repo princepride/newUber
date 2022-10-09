@@ -35,7 +35,7 @@ const Carousel = () => {
         )
     }
     return (
-        <View style={tw`flex-1 bg-white`}>
+        <View style={tw`bg-white`}>
             <StatusBar style='auto' />
 
             <FlatList 
