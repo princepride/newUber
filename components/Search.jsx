@@ -1,4 +1,4 @@
-import { SafeAreaView, TextInput, View, StyleSheet } from "react-native";
+import { TextInput } from "react-native";
 import React, {useState} from 'react'
 import tw from 'tailwind-react-native-classnames'
 

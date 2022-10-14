@@ -1,18 +1,47 @@
 // In App.js in a new project
 import { View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import Carousel from '../components/Carousel'
-import Search from '../components/Search';
+import { TextInput, Button } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames'
-import SuperSearch from '../components/SuperSearch';
+import Schedule from '../components/Schedule';
+import { useStateContext } from '../context/ContextProvider'
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
+    const [place, setPlace] = useState(null);
+    const { handleClick, isClicked} = useStateContext();
     return (
-    <View style={tw`flex-col`}>
-    <Carousel />
-    {/*<Search />*/}
-    <SuperSearch />
-    </View>
+        <>
+        <View style={tw`flex-col`}>
+            <Carousel />
+            <View style={tw`flex-row`}>
+                <TextInput
+                    style={tw`w-64`}
+                    theme={{ roundness: 50 }}
+                    mode='outlined'
+                    label="Place"
+                    placeholder='Where to?'
+                    value={place}
+                    onChangeText={place => setText(place)}
+                    left={<TextInput.Icon icon="magnify" />}
+                    onFocus={() => navigation.navigate("SetPickUp")}
+                />
+                <View style={tw`pt-1 pl-1`}>
+                    <Button
+                        style={tw`w-32 p-2`}
+                        theme={{ roundness: 50 }}
+                        icon="clock"
+                        mode="contained"
+                        contentStyle={{ flexDirection: 'row-reverse' }}
+                        onPress={() => handleClick("schedule")}
+                    >
+                        Now
+                    </Button>
+                </View>
+            </View>
+        </View>
+        {isClicked.schedule && < Schedule />}
+        </>
     )
 }
 

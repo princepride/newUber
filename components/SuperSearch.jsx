@@ -2,17 +2,9 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { TextInput, Button } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames'
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const SuperButton = () => {
-    return (
-        <Button icon="clock" mode="contained" onPress={() => console.log('Pressed')}>
-            Now
-        </Button>
-    )
-}
-
-const SuperSearch = () => {
+const SuperSearch = ({}) => {
     const [place, setPlace] = useState(null);
     return (
         <View style={tw`flex-row`}>
@@ -33,7 +25,7 @@ const SuperSearch = () => {
             icon="clock"
             mode="contained" 
             contentStyle={{flexDirection: 'row-reverse'}}
-            onPress={() => console.log('Pressed')}>
+            >
                 Now
             </Button>
             </View>
