@@ -1,14 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import StayturnScreen from './StayturnScreen'
+import MainAccountScreen from './MainAccountScreen'
+
+const Stack = createNativeStackNavigator();
 
 const AccountScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>AccountScreen</Text>
-    </View>
+    <Stack.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+      })}
+    >
+      <Stack.Screen name="MainAccountScreen" component={MainAccountScreen} />
+      <Stack.Screen name="StayturnScreen" component={StayturnScreen} />
+    </Stack.Navigator>
   )
 }
 
 export default AccountScreen
-
-const styles = StyleSheet.create({})

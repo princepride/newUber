@@ -6,6 +6,7 @@ import { TextInput, Button } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames'
 import Schedule from '../components/Schedule';
 import { useStateContext } from '../context/ContextProvider'
+import TimePicker from '../components/TimePicker';
 
 const HomeScreen = ({ navigation }) => {
     const [place, setPlace] = useState(null);
@@ -40,7 +41,8 @@ const HomeScreen = ({ navigation }) => {
                 </View>
             </View>
         </View>
-        {isClicked.schedule && < Schedule />}
+        {isClicked.schedule && <Schedule navigation={navigation}/>}
+        {isClicked.setTime && <TimePicker/>}
         </>
     )
 }

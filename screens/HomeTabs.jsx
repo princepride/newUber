@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 
 const HomeTabs = (navigation) => {
   return (
-
+    <>
       <Tab.Navigator
       screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -43,17 +43,9 @@ const HomeTabs = (navigation) => {
         <Tab.Screen name="Chatbot" component={ChatbotScreen} />
         <Tab.Screen name="Account" component={AccountScreen} />
       </Tab.Navigator>
+    </>
   )
 }
 
 export default HomeTabs
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
 
