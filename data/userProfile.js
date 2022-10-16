@@ -3,7 +3,7 @@ export const userProfile = [
         firstname: 'Zhipeng',
         lastname: 'Wang',
         gender: 'Male',
-        image: './avatar.png',
+        image: '../assets/avatar.png',
         destination:'New York',
     }
 ]

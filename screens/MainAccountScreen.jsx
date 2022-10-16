@@ -2,19 +2,20 @@ import { View, Image, Text,SafeAreaView } from 'react-native'
 import { Button, List } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames'
 import React from 'react'
-import { userProfile } from '../data/userProfile'
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useStateContext } from '../context/ContextProvider'
 
 const MainAccountScreen = ({ navigation }) => {
+    const { profile } = useStateContext()
     return (
         <SafeAreaView style={tw`flex p-4 justify-between top-8`}>
             <View style={tw`flex-row justify-between`}>
                 <View style={tw`pt-6 pl-2`}>
-                    <Text style={tw`text-xl font-black`}>{`${userProfile[0].firstname} ${userProfile[0].lastname}`}</Text>
+                    <Text style={tw`text-xl font-black`}>{`${profile[0].firstname} ${profile[0].lastname}`}</Text>
                 </View>
                 <Image
                     style={tw`rounded-full w-20 h-20`}
                     source={require('../assets/avatar.png')}
+                    //source={require(profile[0].image)}
                 >
                 </Image>
             </View>

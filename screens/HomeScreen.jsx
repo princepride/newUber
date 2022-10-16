@@ -23,6 +23,7 @@ const HomeScreen = ({ navigation }) => {
                     label="Place"
                     placeholder='Where to?'
                     value={place}
+                    editable={false}
                     onChangeText={place => setText(place)}
                     left={<TextInput.Icon icon="magnify" />}
                     onFocus={() => navigation.navigate("SetPickUp")}
@@ -42,7 +43,7 @@ const HomeScreen = ({ navigation }) => {
             </View>
         </View>
         {isClicked.schedule && <Schedule navigation={navigation}/>}
-        {isClicked.setTime && <TimePicker/>}
+        {isClicked.setTime && <TimePicker navigation={navigation}/>}
         </>
     )
 }
