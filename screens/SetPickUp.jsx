@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, SafeAreaView } from 'react-native'
 import { TextInput } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames'
 import { useStateContext } from '../context/ContextProvider'
@@ -6,10 +6,10 @@ import React, {useState} from 'react'
 
 const SetPickUp = ({ navigation }) => {
   const { profile, scheduleTime} = useStateContext();
-  const [place, setPlace] = useState(profile[0].destination);
+  const [place, setPlace] = useState(profile.destination);
   console.log(scheduleTime)
   return (
-    <View>
+    <SafeAreaView style={tw`top-8`}>
       <TextInput
         style={tw`w-full`}
         theme={{ roundness: 50 }}
@@ -34,7 +34,7 @@ const SetPickUp = ({ navigation }) => {
         left={<TextInput.Icon icon="magnify" />}
         //onFocus={() => navigation.navigate("SetPickUp")}
       />
-    </View>
+    </SafeAreaView>
   )
 }
 

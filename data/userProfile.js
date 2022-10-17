@@ -1,4 +1,4 @@
-export const userProfile = [
+export const userProfile = 
     {
         firstname: 'Zhipeng',
         lastname: 'Wang',
@@ -6,4 +6,3 @@ export const userProfile = [
         image: '../assets/avatar.png',
         destination:'New York',
     }
-]

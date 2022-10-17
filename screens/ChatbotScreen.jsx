@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, SafeAreaView } from 'react-native'
+import tw from 'tailwind-react-native-classnames'
 import React from 'react'
 
 const ChatbotScreen = () => {
   return (
-    <View>
+    <SafeAreaView style={tw`top-8`}>
       <Text>ChatbotScreen</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 
