@@ -10,7 +10,7 @@ const MainAccountScreen = ({ navigation }) => {
         <SafeAreaView style={tw`flex p-4 justify-between top-8`}>
             <View style={tw`flex-row justify-between`}>
                 <View style={tw`pt-6 pl-2`}>
-                    <Text style={tw`text-xl font-black`}>{`${profile[0].firstname} ${profile[0].lastname}`}</Text>
+                    <Text style={tw`text-xl font-black`}>{`${profile.firstname} ${profile.lastname}`}</Text>
                 </View>
                 <Image
                     style={tw`rounded-full w-20 h-20`}

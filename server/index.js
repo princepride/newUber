@@ -5,10 +5,11 @@ const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
-app.put('/stockportfolio', (req, res) => {
+app.put('/uberdata', (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
-    const db = new sqlite3.Database('./uber.db', sqlite3.OPEN_READWRITE, (err) => {
+    console.log(firstname + ' ' + lastname)
+    const db = new sqlite3.Database('./uberdb.db', sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
             console.error(err.message);
         }
