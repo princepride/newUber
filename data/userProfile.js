@@ -1,7 +1,6 @@
 export const userProfile = 
     {
-        firstname: 'Zhipeng',
-        lastname: 'Wang',
+        name: 'Wang Zhipeng',
         gender: 'Male',
         image: '../assets/avatar.png',
         destination:'New York',

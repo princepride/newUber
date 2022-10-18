@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
-const HomeTabs = (navigation) => {
+const HomeTabs = ({navigation}) => {
   return (
     <>
       <Tab.Navigator
@@ -39,9 +39,9 @@ const HomeTabs = (navigation) => {
             padding:5,
           }
         })}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Chatbot" component={ChatbotScreen} />
-        <Tab.Screen name="Account" component={AccountScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} navigation={navigation}/>
+        <Tab.Screen name="Chatbot" component={ChatbotScreen} navigation={navigation}/>
+        <Tab.Screen name="Account" component={AccountScreen} navigation={navigation}/>
       </Tab.Navigator>
     </>
   )

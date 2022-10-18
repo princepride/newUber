@@ -2,11 +2,13 @@ import { StyleSheet, View, SafeAreaView } from 'react-native'
 import { TextInput } from 'react-native-paper';
 import tw from 'tailwind-react-native-classnames'
 import { useStateContext } from '../context/ContextProvider'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 const SetPickUp = ({ navigation }) => {
   const { profile, scheduleTime} = useStateContext();
-  const [place, setPlace] = useState(profile.destination);
+  const [place, setPlace] = useState();
+
+  //useEffect(() => {setPlace(profile.destination)},[])
   console.log(scheduleTime)
   return (
     <SafeAreaView style={tw`top-8`}>
@@ -18,7 +20,6 @@ const SetPickUp = ({ navigation }) => {
         placeholder='Where to?'
         value="University Town, NUS"
         editable={false}
-        onChangeText={place => setText(place)}
         left={<TextInput.Icon icon="magnify" />}
         //onFocus={() => navigation.navigate("SetPickUp")}
       />
@@ -28,9 +29,7 @@ const SetPickUp = ({ navigation }) => {
         theme={{ roundness: 50 }}
         mode='outlined'
         label="Go To Pin"
-        placeholder='Where to?'
-        value={place}
-        onChangeText={place => setText(place)}
+        placeholder={profile.destination}
         left={<TextInput.Icon icon="magnify" />}
         //onFocus={() => navigation.navigate("SetPickUp")}
       />

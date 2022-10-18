@@ -6,9 +6,8 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 app.put('/uberdata', (req, res) => {
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
-    console.log(firstname + ' ' + lastname)
+    const name = req.body.name;
+    const password = req.body.password;
     const db = new sqlite3.Database('./uberdb.db', sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
             console.error(err.message);
@@ -19,12 +18,13 @@ app.put('/uberdata', (req, res) => {
     });
     db.serialize(() => {
         //db.each(`SELECT stocktickers,chromosome,max(sharpe) FROM garesults WHERE date='${day}'`, (err, row) => {
-        db.each(`SELECT firstname,lastname,gender,destination FROM userprofile WHERE firstname is ? AND lastname is ?`, 
-        [firstname, lastname],
+        db.each(`SELECT name,gender,destination FROM userprofile WHERE name is ? AND password is ?`, 
+        [name, password],
         (err, row) => {
             if (err) {
                 console.error(err.message);
             }
+            console.log(row)
             res.send(row)
         });
     });
