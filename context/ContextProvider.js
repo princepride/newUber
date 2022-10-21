@@ -15,13 +15,23 @@ export const ContextProvider = ({ children }) => {
     const [scheduleTime, setScheduleTime] = useState(new Date());
     const [profile, setprofile] = useState(userProfile);
     const [login, setLogin] = useState(false);
+    const [chats, setChats] = useState([
+        //{
+        //  name: 'bot',
+        //  text: "please input your drop-off location"
+        //},
+        {
+            name: 'bot',
+            text: "please input your drop-off location"
+          },
+      ]);
     //const [profile, setprofile] = useState(userProfile);
 
     const handleClick = (clicked) => setIsClicked( {...initialState, [clicked]: true})
     return (
         <StateContext.Provider value={{isClicked, handleClick,
         scheduleTime, setScheduleTime, profile, setprofile,
-        login, setLogin}}>
+        login, setLogin,chats, setChats}}>
             {children}
         </StateContext.Provider>
     )

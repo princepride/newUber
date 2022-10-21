@@ -1,30 +1,54 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import tw from 'tailwind-react-native-classnames'
 import shareVideo from '../data/share.mp4';
+import image from '../assets/1.jpg'
 import React, { useState } from 'react'
 import { TextInput, Button } from 'react-native-paper';
 import { useStateContext } from '../context/ContextProvider'
+import { postData } from '../fetchMethod'
 import Axios from 'axios';
 
-const Login = () => {
+const Login = ({ navigation }) => {
     const [name, setName] = useState();
     const [password, setPassword] = useState('');
     const [incorrect, setIncorrent] = useState(false);
     const { setLogin, setprofile } = useStateContext();
 
+    //const handleClick = () => {
+    //    Axios.put("http://localhost:3001/uberdata", { name: name, password: password }).then((respose) => {
+    //        if (respose!= null) {
+    //            setLogin(true)
+    //            setprofile(respose);
+    //        }
+    //    })
+    //    setIncorrent(true);
+    //}
     const handleClick = () => {
-        Axios.put("http://localhost:3001/uberdata", { name: name, password: password }).then((respose) => {
-            if (respose.data != null) {
-                setLogin(true)
-                setprofile(respose.data);
+        postData('http://localhost:5000/login', { name: name, password: password })
+            .then((data) => {
+                console.log(data);
+                if (data.length != 0) {
+                    setLogin(true)
+                    setprofile({
+                        name: data[0][0],
+                        destination: data[0][1]
+                    })
+                }
             }
-        })
-        setIncorrent(true);
+        );
     }
+    //Axios.post("http://localhost:5000", { name: name, password: password }).then((respose) => {
+    //fetch("http://localhost:5000").then(
+    //    res => res.json()
+    //).then(
+    //    data => {
+    //        console.log(data)
+    //    }
+    //)
     return (
-        <View style={tw`flex justify-start items-center flex-col`}>
+        <View style={tw`flex justify-start items-center flex-col w-full h-full`}>
             <View style={tw`relative w-full h-full`}>
-                <video
+                {/*<video
                     src={shareVideo}
                     type="video/mp4"
                     loop
@@ -32,7 +56,7 @@ const Login = () => {
                     muted
                     autoPlay
                     style={styles.video}
-                />
+                />*/}
                 <View style={tw`absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0`}>
                     <TextInput
                         style={tw`w-64`}
@@ -59,7 +83,7 @@ const Login = () => {
                             theme={{ roundness: 50 }}
                             mode="contained"
                             contentStyle={{ flexDirection: 'row-reverse' }}
-                            onPress={() => handleClick("schedule")}
+                            onPress={() => handleClick()}
                         >
                             Login
                         </Button>
@@ -69,7 +93,7 @@ const Login = () => {
                             theme={{ roundness: 50 }}
                             mode="contained"
                             contentStyle={{ flexDirection: 'row-reverse' }}
-                            onPress={() => { }}
+                            onPress={() => { navigation.navigate("Register") }}
                         >
                             Register
                         </Button>
@@ -84,9 +108,9 @@ const Login = () => {
 export default Login
 
 const styles = StyleSheet.create({
-    video:{
+    video: {
         width: '100%',
         height: '100%',
-        resizeMode: 'contain'
+        resizeMode: 'cover'
     }
 })
