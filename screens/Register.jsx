@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { TextInput, Button } from 'react-native-paper';
 import { useStateContext } from '../context/ContextProvider'
 import { postData } from '../fetchMethod'
+import { backendhost } from '../configure' 
 import Axios from 'axios';
 
 const Register = ({ navigation }) => {
@@ -30,7 +31,7 @@ const Register = ({ navigation }) => {
 
 
     const handleClick = () => {
-        postData('http://192.168.43.49:5000/register', { name: name, password: password, destination: destination })
+        postData(backendhost+'register', { name: name, password: password, destination: destination })
             .then((data) => {
                 console.log(data);
                 console.log(typeof (data));

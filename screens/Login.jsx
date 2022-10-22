@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { TextInput, Button } from 'react-native-paper';
 import { useStateContext } from '../context/ContextProvider'
 import { postData } from '../fetchMethod'
+import { backendhost } from '../configure' 
 import Axios from 'axios';
 
 const Login = ({ navigation }) => {
@@ -24,7 +25,7 @@ const Login = ({ navigation }) => {
     //    setIncorrent(true);
     //}
     const handleClick = () => {
-        postData('http://192.168.43.49:5000/login', { name: name, password: password })
+        postData(backendhost+'login', { name: name, password: password })
             .then((data) => {
                 console.log(data);
                 if (data.length != 0) {

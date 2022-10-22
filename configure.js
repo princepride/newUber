@@ -1,0 +1,1 @@
+export const backendhost = "http://192.168.43.49:5000/"

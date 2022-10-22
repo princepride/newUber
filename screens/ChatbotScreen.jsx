@@ -4,6 +4,7 @@ import tw from 'tailwind-react-native-classnames'
 import React, { useState } from 'react'
 import { useStateContext } from '../context/ContextProvider'
 import { postData } from '../fetchMethod'
+import { backendhost } from '../configure' 
 
 const ChatbotScreen = () => {
   const [context, setContext] = useState('')
@@ -16,7 +17,7 @@ const ChatbotScreen = () => {
       text: context
     }])
     console.log(chats)
-    postData('http://192.168.43.49:5000/chatbot', { context: context, tag1: tag1, tag2: tag2 ,name: profile.name })
+    postData(backendhost+'chatbot', { context: context, tag1: tag1, tag2: tag2 ,name: profile.name })
       .then((data) => {
         console.log(typeof (data))
         console.log(data)
@@ -30,6 +31,7 @@ const ChatbotScreen = () => {
         setTag1(data[1])
         setTag2(data[2])
       })
+      setContext('')
   }
   return (
     <>
@@ -61,6 +63,7 @@ const ChatbotScreen = () => {
             theme={{ roundness: 50 }}
             mode='outlined'
             onChangeText={text => setContext(text)}
+            value={context}
           //onFocus={() => navigation.navigate("SetPickUp")}
           />
           <View style={tw`pt-1 pl-1`}>
