@@ -30,7 +30,7 @@ const Register = ({ navigation }) => {
 
 
     const handleClick = () => {
-        postData('http://localhost:5000/register', { name: name, password: password, destination: destination })
+        postData('http://192.168.43.49:5000/register', { name: name, password: password, destination: destination })
             .then((data) => {
                 console.log(data);
                 console.log(typeof (data));
@@ -58,15 +58,10 @@ const Register = ({ navigation }) => {
     return (
         <View style={tw`flex justify-start items-center flex-col w-full h-full`}>
             <View style={tw`relative w-full h-full`}>
-                {/*<video
-                    src={shareVideo}
-                    type="video/mp4"
-                    loop
-                    controls={false}
-                    muted
-                    autoPlay
-                    style={styles.video}
-                />*/}
+            {/*<Image 
+      style={tw`h-full w-full`}
+      source={require('../assets/stay-turned.jpg')}
+      />*/}
                 <View style={tw`absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0`}>
                     <TextInput
                         style={tw`w-64`}

@@ -16,7 +16,7 @@ const ChatbotScreen = () => {
       text: context
     }])
     console.log(chats)
-    postData('http://localhost:5000/chatbot', { context: context, tag1: tag1, tag2: tag2 ,name: profile.name })
+    postData('http://192.168.43.49:5000/chatbot', { context: context, tag1: tag1, tag2: tag2 ,name: profile.name })
       .then((data) => {
         console.log(typeof (data))
         console.log(data)
