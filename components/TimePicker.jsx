@@ -5,10 +5,7 @@ import { Button } from 'react-native-paper';
 import { useStateContext } from '../context/ContextProvider'
 
 const TimePicker = ({navigation}) => {
-  const { scheduleTime, setScheduleTime } = useStateContext()
-  const [hour, setHour] = useState(scheduleTime.getHours())
-  const [minute, setMinute] = useState(scheduleTime.getMinutes())
-
+  const { scheduleTime, setScheduleTime, hour, setHour, minute, setMinute, handleClick } = useStateContext()
 
   const Item1 = ({ title }) => {
     if (title == hour) {
@@ -92,6 +89,7 @@ const TimePicker = ({navigation}) => {
           tempTime.setHours(hour)
           tempTime.setMinutes(minute)
           setScheduleTime(tempTime);
+          handleClick("");
           navigation.navigate("SetPickUp")
           }}>
         Confirm

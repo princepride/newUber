@@ -1,0 +1,20 @@
+categories:
+- user
+conversations:
+- - not
+  - not
+- - I like you
+  - I like you
+- - Do you like me
+  - I like you
+- - How old are you
+  - I am always 18
+
+- - How old are you
+- - How much are you
+  - I am priceless
+- - How much are you
+
+- - which language did this software use
+  - python
+- - which language did this software use

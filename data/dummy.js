@@ -1,25 +1,19 @@
 const carouselItem = [
     {
         id: '1',
-        title: "A Yello Car",
-        description: "Location: Red Sea",
-        promo: "10% off",
-        url:'https://m.media-amazon.com/images/I/51-5v0jxxaL._AC_SY450_.jpg',
+        title: "NUS",
+        url:'http://nus.edu.sg/images/default-source/logo/white-1200x630.jpg',
     },
     {
         id: '2',
-        title: "An Orange Car",
-        description: "iPhone 6 on the table",
-        promo: "20% off",
-        url:"https://m.media-amazon.com/images/I/71uKBNANj+L._AC_SX450_.jpg",
+        title: "Utown",
+        url:"https://www.clavons.sg/wp-content/uploads/2020/03/clavon-nus-university-town.jpg",
     },
 
     {
         id: '3',
-        title: "A Toy Car",
-        description: "Location: Germany",
-        promo: "30% off",
-        url:"https://m.media-amazon.com/images/I/71VEtPLgBxL._AC_SY450_.jpg",
+        title: "Taxi",
+        url:"http://img-www-yihaocar-com.oss-cn-hangzhou.aliyuncs.com/images/cjh/20210905/50/76310a8dd5998dc493f1a0d838b8e440.jpeg?x-oss-process=image/resize,w_710",
     },
 ];
 export default carouselItem;

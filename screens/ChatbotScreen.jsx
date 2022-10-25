@@ -9,7 +9,9 @@ import { backendhost } from '../configure'
 const ChatbotScreen = () => {
   const [context, setContext] = useState('')
   const [tag1, setTag1] = useState(false)
-  const [tag2, setTag2] = useState(false)
+  const [tag2, setTag2] = useState(true)
+  const [tag3, setTag3] = useState(false)
+  const [tag4, setTag4] = useState(false)
   const { chats, setChats, profile } = useStateContext()
   const handleClick = () => {
     setChats([...chats, {
@@ -17,7 +19,7 @@ const ChatbotScreen = () => {
       text: context
     }])
     console.log(chats)
-    postData(backendhost+'chatbot', { context: context, tag1: tag1, tag2: tag2 ,name: profile.name })
+    postData(backendhost+'chatbot', { context: context, tag1: tag1, tag2: tag2, tag3: tag3, tag4: tag4,name: profile.name })
       .then((data) => {
         console.log(typeof (data))
         console.log(data)
@@ -30,6 +32,8 @@ const ChatbotScreen = () => {
         }])
         setTag1(data[1])
         setTag2(data[2])
+        setTag3(data[3])
+        setTag4(data[4])
       })
       setContext('')
   }
@@ -41,7 +45,7 @@ const ChatbotScreen = () => {
             return (
               <View style={tw`flex p-2 flex-row`} key={`${chat.text}-${index}`}>
                 {chat.name === 'bot' &&
-                  <><Image style={tw`w-8 h-8 p-1`} source={require('../assets/bot.png')} /><Text style={tw`bg-blue-400 p-2 rounded-lg text-xl italic`}>
+                  <><Image style={tw`w-8 h-8 p-1`} source={require('../assets/bot.png')} /><Text style={tw`bg-gray-200 p-2 rounded-lg text-lg w-80`}>
                     {chat.text}
                   </Text></>}
                 {chat.name === 'user' &&

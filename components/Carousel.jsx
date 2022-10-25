@@ -29,7 +29,6 @@ const Carousel = () => {
         <Image source={{uri:item.url}} style={styles.image} />
         <View style={styles.footer}>
             <Text style={styles.footerText}>{item.title}</Text>
-            <Text style={styles.footerText}>{item.promo}</Text>
         </View>
         </TouchableOpacity>
         )
@@ -82,7 +81,7 @@ const styles = StyleSheet.create(
         },
         footer:{
             flexDirection:'row',
-            justifyContent:'space-between',
+            justifyContent:'center',
             height:50,
             paddingHorizontal:40,
             alignItems:'center',
@@ -91,7 +90,7 @@ const styles = StyleSheet.create(
         footerText:{
             color:"#fff",
             fontSize:18,
-            fontWeight:'bold'
+            fontWeight:'bold',
         },
         dotView: {
             flexDirection:"row",
