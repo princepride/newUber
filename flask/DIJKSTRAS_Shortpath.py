@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Oct 25 15:08:47 2022
+
+@author: 233
+"""
+
 import pandas as pd
 import geopy.distance
 # pip install Image
@@ -13,7 +20,7 @@ def DIJKSTRAS_Shortpath(start_point,end_point):
   # singapore_img = Image.open(r"C:\Users\lenovo\Desktop\singapore-map-4.png")
   
   ########
-  # xuchan
+  # 
   singapore_img = Image.open("./sg_route_map_background.png")
   # df5 = pd.read_csv('C:\Users\lenovo\Desktop\ad_taxistop.csv',sep=',', encoding='latin-1')
   # df5 = pd.read_csv( r"C:\Users\lenovo\Desktop\ad_taxistop.csv",sep=',', encoding='latin-1')
@@ -33,7 +40,8 @@ def DIJKSTRAS_Shortpath(start_point,end_point):
   index2 = df[df.name == str2].index.tolist()[0]  
   start=int(index1)
   end=int(index2)
-
+  index4=start+end
+  print(index4)
   ad=df5.values.tolist()
 
   # ad[1][2]=1
@@ -186,12 +194,19 @@ def DIJKSTRAS_Shortpath(start_point,end_point):
   x0 = int(start)
   destination_list = [xn]
   print("最短的路径代价为:", node_cost[xn][1])
+  cost=node_cost[xn][1]
+  cost=round(cost,2)
   while x0 not in destination_list:
       xn = int(node_cost[xn][2])
       destination_list.append(xn)
   print("最短路径为：", destination_list)
-
-  # xuchan
+  destination_ls=[]
+  for i in range(len(destination_list)):
+      index3=destination_list[i]
+      destination_ls.append(df['name'][index3])
+  # print(destination_ls)
+  
+  # 
   ax = df.plot.scatter(
       x="lon", 
       y="lat", 
@@ -208,11 +223,11 @@ def DIJKSTRAS_Shortpath(start_point,end_point):
     c=df.iloc[destination_list[len(destination_list)-(i+2)],3]
     b=df.iloc[destination_list[len(destination_list)-(i+1)],2]
     d=df.iloc[destination_list[len(destination_list)-(i+2)],2]
-    # xuchan
+    # 
     plt.plot([a, c], [b, d], c='r', linewidth=7,linestyle='solid',alpha=1,zorder=1)
 
   # use our map with it's bounding coordinates
-  # xuchan
+  # 
   extent=[103.6804, 103.9986, 1.2613, 1.4023]
   plt.imshow(singapore_img, extent=[103.6804, 103.9986, 1.2613, 1.4023], alpha=0.6,zorder=0) 
   # plt.imshow(singapore_img, extent=[103.5,104,1.15, 1.50], alpha=0.5)           
@@ -220,19 +235,26 @@ def DIJKSTRAS_Shortpath(start_point,end_point):
   plt.ylabel("Latitude", fontsize=20)
   plt.xlabel("Longitude", fontsize=20)
   # set the min/max axis values - these must be the same as above
-  # xuchan
+  # 
   plt.ylim(extent[2], extent[3])
   plt.xlim(extent[0], extent[1])
-  # xuchan
+  # 
   plt.xticks([]) 
   plt.yticks([]) 
   plt.legend(fontsize=20)
   plt.axis("off")
-  plt.savefig('./Dij_shortpath%(index1)s.png'% {'index1': index2}, bbox_inches='tight', pad_inches=0.0)
+  plt.savefig('./Dij_shortpath%(index1)s%(index2)s.png'% {'index1': index1,'index2': index2}, bbox_inches='tight', pad_inches=0.0)
   
-  path='./Dij_shortpath%(index1)s.png'% {'index1': index2}
+  path='./Dij_shortpath%(index1)s%(index2)s.png'% {'index1': index1,'index2': index2}
 
-  return path
+  destination_sequence=''
+  for i in range(len(destination_ls)):
+      destination_sequence = destination_sequence+destination_ls[-1-i]+" → "
+  destination_sequence=destination_sequence[0:-2]
+  
+  return [path,cost,destination_sequence]
+
+
 
 
 print(DIJKSTRAS_Shortpath(start_point,end_point))

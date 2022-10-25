@@ -30,9 +30,12 @@ const SetPickUp = ({ navigation }) => {
   const handleClick = () => {
 
     Axios.post(backendhost+'map', { destination:destination, hour:hour, minute:minute }).then((respose) => {
+      // console.log(respose)
+      // setTimeout(()=>{setImagesrc(respose.data[0])},10000)
       setImagesrc(respose.data[0])
       setStr(respose.data[1])
       setShowImage(true)
+      // setTimeout(()=>{setShowImage(true)},10000)
   })
   }
   //useEffect(() => {setPlace(profile.destination)},[])
@@ -70,8 +73,13 @@ const SetPickUp = ({ navigation }) => {
       >
         Confirm
       </Button>
-      {showImage && <>
+      {/* {showImage && setTimeout(()=>(<>
       <Image style={tw`w-full h-40 p-1`} source={`data:image/png;base64, ${imagesrc}`}></Image>
+      <Text style={tw`text-xl italic p-1`}>{str}</Text>
+      </>),3000)} */}
+            {showImage && <>
+      <View style={tw`p-2`}></View>
+      <Image style={tw`w-full h-40 p-1`} source={{uri:`data:image/png;base64, ${imagesrc}`}}></Image>
       <Text style={tw`text-xl italic p-1`}>{str}</Text>
       </>}
     </SafeAreaView>

@@ -102,15 +102,35 @@ def map():
     print(len(cluster_decision_result))
     encoded_string=None
     if cluster_decision_result[0]=='Function still unfinished':
+        filepath = DIJKSTRAS_Shortpath('University town',cluster_decision_result[0])
         with open('sg_route_map_background.png', "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read())
-        return jsonify([encoded_string.decode('utf-8'),"Number of taxi sharing passengers: "+str(cluster_decision_result[2])+"\nTrip direction: "+str(cluster_decision_result[1])+"\nTrip destination: "+str(cluster_decision_result[0])+"\nThe route map is still under development"])
+        return jsonify(
+            [encoded_string.decode('utf-8'),
+            "Number of taxi sharing passengers: "+str(cluster_decision_result[2])+
+            "\n"+
+            "\nTrip direction: "+str(cluster_decision_result[1])+
+            "\n"+
+            "\nOptimal path length: "+str(filepath[1])+"km"+
+            "\n"+
+            "\nPassing stations: "+str(filepath[2])+
+            "\n"+
+            "\nThe route map is still under development"])
     else:
         filepath = DIJKSTRAS_Shortpath('University town',cluster_decision_result[0])
-        with open(filepath, "rb") as image_file:
+        with open(filepath[0], "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read())
         print(encoded_string)
-        return jsonify([encoded_string.decode('utf-8'),"Number of taxi sharing passengers: "+str(cluster_decision_result[2])+"\nTrip direction: "+str(cluster_decision_result[1])+"\nTrip destination: "+str(cluster_decision_result[0])])
+        return jsonify([encoded_string.decode('utf-8'),
+        "Number of taxi sharing passengers: "+str(cluster_decision_result[2])+
+        "\n"+
+        "\nTrip direction: "+str(cluster_decision_result[1])+
+        "\n"+
+        "\nTrip destination: "+str(cluster_decision_result[0])+
+        "\n"+
+        "\nOptimal path length: "+str(filepath[1])+"km"+
+        "\n"+
+        "\nPassing stations: "+str(filepath[2])])
 
     #return jsonify({"imgUrl":'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/800px-Image_created_with_a_mobile_phone.png'})
 

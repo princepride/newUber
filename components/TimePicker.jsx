@@ -82,7 +82,7 @@ const TimePicker = ({navigation}) => {
       <View style={tw`items-center`}>
       <View style={tw`absolute top-40`}>
         <Button 
-        style={tw`w-auto bg-gray-300 pl-4 pr-4 pt-2 pb-2`} 
+        style={tw`bg-gray-300 pl-4 pr-4 pt-2 pb-2`} 
         onPress={() => {
           //setScheduleTime()
           let tempTime = new Date()
