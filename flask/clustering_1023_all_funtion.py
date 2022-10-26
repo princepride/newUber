@@ -314,7 +314,8 @@ def cluster_decision(p_des,hour,minute):
         return dest
     # print(list(taxi_stand))
     direction=taxi_stand[taxi_stand['name']==des]['direction'].values[0]
-    return [route_generate(taxi_term,p_des,share,des),direction,len(share)]
+    passenger_all_des=[p_des]+share
+    return passenger_all_des
   
     
 # ####js print result

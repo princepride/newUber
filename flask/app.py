@@ -7,15 +7,15 @@ import json
 import sqlite3
 import base64
 from PIL import Image
-from DIJKSTRAS_Shortpath import DIJKSTRAS_Shortpath
+#from DIJKSTRAS_Shortpath import DIJKSTRAS_Shortpath
 from clustering_1023_all_funtion import cluster_decision
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot.trainers import ListTrainer
 import pandas as pd
-import yaml
 import numpy as np
 import os
+from dijkstras import dijikstrasDraw
 
 app = Flask(__name__)
 CORS(app)
@@ -98,40 +98,48 @@ def map():
     print(destination)
     print(hour)
     print(minute)
+    route = cluster_decision(destination,hour,minute)
+    route = ['University town']+list(set(route))
+    print(route)
+    temp = dijikstrasDraw(route)
+    print(temp)
+    with open(temp, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    return jsonify([encoded_string.decode('utf-8'),""])
     # str = fun(destination,hour,minute)
-    cluster_decision_result=cluster_decision(destination,hour,minute)
-    print(len(cluster_decision_result))
-    encoded_string=None
-    if cluster_decision_result[0]=='Function still unfinished':
-        filepath = DIJKSTRAS_Shortpath('University town',cluster_decision_result[0])
-        with open('sg_route_map_background.png', "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read())
-        return jsonify(
-            [encoded_string.decode('utf-8'),
-            "Number of taxi sharing passengers: "+str(cluster_decision_result[2])+
-            "\n"+
-            "\nTrip direction: "+str(cluster_decision_result[1])+
-            "\n"+
-            "\nOptimal path length: "+str(filepath[1])+"km"+
-            "\n"+
-            "\nPassing stations: "+str(filepath[2])+
-            "\n"+
-            "\nThe route map is still under development"])
-    else:
-        filepath = DIJKSTRAS_Shortpath('University town',cluster_decision_result[0])
-        with open(filepath[0], "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read())
-        print(encoded_string)
-        return jsonify([encoded_string.decode('utf-8'),
-        "Number of taxi sharing passengers: "+str(cluster_decision_result[2])+
-        "\n"+
-        "\nTrip direction: "+str(cluster_decision_result[1])+
-        "\n"+
-        "\nTrip destination: "+str(cluster_decision_result[0])+
-        "\n"+
-        "\nOptimal path length: "+str(filepath[1])+"km"+
-        "\n"+
-        "\nPassing stations: "+str(filepath[2])])
+    #cluster_decision_result=cluster_decision(destination,hour,minute)
+    #print(len(cluster_decision_result))
+    #encoded_string=None
+    #if cluster_decision_result[0]=='Function still unfinished':
+    #    filepath = DIJKSTRAS_Shortpath('University town',cluster_decision_result[0])
+    #    with open('sg_route_map_background.png', "rb") as image_file:
+    #        encoded_string = base64.b64encode(image_file.read())
+    #    return jsonify(
+    #        [encoded_string.decode('utf-8'),
+    #        "Number of taxi sharing passengers: "+str(cluster_decision_result[2])+
+    #        "\n"+
+    #        "\nTrip direction: "+str(cluster_decision_result[1])+
+    #        "\n"+
+    #        "\nOptimal path length: "+str(filepath[1])+"km"+
+    #        "\n"+
+    #        "\nPassing stations: "+str(filepath[2])+
+    #        "\n"+
+    #        "\nThe route map is still under development"])
+    #else:
+    #    filepath = DIJKSTRAS_Shortpath('University town',cluster_decision_result[0])
+    #    with open(filepath[0], "rb") as image_file:
+    #        encoded_string = base64.b64encode(image_file.read())
+    #    print(encoded_string)
+    #    return jsonify([encoded_string.decode('utf-8'),
+    #    "Number of taxi sharing passengers: "+str(cluster_decision_result[2])+
+    #    "\n"+
+    #    "\nTrip direction: "+str(cluster_decision_result[1])+
+    #    "\n"+
+    #    "\nTrip destination: "+str(cluster_decision_result[0])+
+    #    "\n"+
+    #    "\nOptimal path length: "+str(filepath[1])+"km"+
+    #    "\n"+
+    #    "\nPassing stations: "+str(filepath[2])])
 
     #return jsonify({"imgUrl":'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/800px-Image_created_with_a_mobile_phone.png'})
 
