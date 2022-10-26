@@ -40,6 +40,7 @@ def login():
     data = res.fetchall()
     cursor.close()
     conn.close()
+    print(data)
     return jsonify(data)
 
 @app.route("/register",methods = ["POST"])
@@ -154,7 +155,7 @@ def chatbot():
     carpool_trainer = ChatterBotCorpusTrainer(carpool_chatbot)
     obtain_path = os.path.dirname(os.path.abspath(__file__))
     library_path = os.path.join(obtain_path, 'carpool_chatbot_libary')
-    carpool_trainer.train('carpool_chatbot_libary')
+    carpool_trainer.train('carpool_chatbot_libary/user_data.yml')
 
     google_maps = GoogleMaps()
     res = ['',NULL,NULL,NULL,NULL]

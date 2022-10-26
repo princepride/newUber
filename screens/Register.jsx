@@ -59,11 +59,12 @@ const Register = ({ navigation }) => {
     return (
         <View style={tw`flex justify-start items-center flex-col w-full h-full`}>
             <View style={tw`relative w-full h-full`}>
-            {/*<Image 
+            <Image 
       style={tw`h-full w-full`}
-      source={require('../assets/stay-turned.jpg')}
-      />*/}
+      source={require('../assets/background.jpg')}
+      />
                 <View style={tw`absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0`}>
+                <Image style={tw`w-64 h-16`} source={require('../assets/logo.png')}/>
                     <TextInput
                         style={tw`w-64`}
                         theme={{ roundness: 50 }}

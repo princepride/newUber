@@ -35,6 +35,9 @@ const Login = ({ navigation }) => {
                         destination: data[0][1]
                     })
                 }
+                else{
+                    setIncorrent(true)
+                }
             }
         );
     }
@@ -49,11 +52,13 @@ const Login = ({ navigation }) => {
     return (
         <View style={tw`flex justify-start items-center flex-col w-full h-full`}>
             <View style={tw`relative w-full h-full`}>
-            {/*<Image 
+            <Image 
       style={tw`h-full w-full`}
-      source={require('../assets/stay-turned.jpg')}
-      />*/}
+      source={require('../assets/background.jpg')}
+      />
                 <View style={tw`absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0`}>
+                    <Image style={tw`w-64 h-16`} source={require('../assets/logo.png')}/>
+                    <View style={tw`pt-1`}></View>
                     <TextInput
                         style={tw`w-64`}
                         theme={{ roundness: 50 }}
@@ -94,7 +99,7 @@ const Login = ({ navigation }) => {
                             Register
                         </Button>
                     </View>
-                    {incorrect && <View style={tw`text-red-700`}>Incorrect username or password.</View>}
+                    {incorrect && <Text style={tw`text-red-700 text-xl`}>Incorrect username or password.</Text>}
                 </View>
             </View>
         </View>
