@@ -36,12 +36,6 @@ class GoogleMaps(object):
 
         return text_query_result.places
 
-        # eg:
-        # google_maps = GoogleMaps()
-        # google_maps.obtain_lat_lng('Clementi')
-        # output: [<Place name="Clementi", lat=1.3161811, lng=103.7649377>]
-
-    
     def obtain_location_list(self, lat, lng, language=language):
         """
         according the lat, lng, use google API to obtain the coordinate message and return it
@@ -56,24 +50,6 @@ class GoogleMaps(object):
         
         return list_reverse_geocode_result
 
-        # eg:
-        # google_maps = GoogleMaps()
-        # google_maps._reverse_geocode(1.3161811, 103.7649377)
-        # [{'address_components': [{'long_name': 'Block 320', 'short_name': 'Block 320', 'types': ['premise']}, 
-        # {'long_name': '320', 'short_name': '320', 'types': ['street_number']}, 
-        # {'long_name': 'Clementi Avenue 4', 'short_name': 'Clementi Ave 4', 'types': ['route']}, 
-        # {'long_name': 'Clementi', 'short_name': 'Clementi', 'types': ['neighborhood', 'political']}, 
-        # {'long_name': 'Singapore', 'short_name': 'Singapore', 'types': ['locality', 'political']}, 
-        # {'long_name': 'Singapore', 'short_name': 'SG', 'types': ['country', 'political']}, 
-        # {'long_name': '120320', 'short_name': '120320', 'types': ['postal_code']}], 
-        # 'formatted_address': '320 Clementi Ave 4, Block 320, Singapore 120320', 
-        # 'geometry': {'bounds': {'northeast': {'lat': 1.3176255, 'lng': 103.7657196}, 
-        # 'southwest': {'lat': 1.3166488, 'lng': 103.7649259}}, 
-        # 'location': {'lat': 1.3170708, 'lng': 103.7654405}, 'location_type': 'ROOFTOP', 
-        # 'viewport': {'northeast': {'lat': 1.318486130291502, 'lng': 103.7666717302915}, 
-        # 'southwest': {'lat': 1.315788169708498, 'lng': 103.7639737697085}}}, 'place_id': 'ChIJg-cMjY8a2jERTms8BvskeD4', 'types': ['premise']}, 
-        # {'address_components': [{'long_name': 'Clementi', 'short_name': 'Clementi', 
-        # ...
 
     def organize_info(self, lat, lng, language=language):
         
@@ -119,11 +95,6 @@ class GoogleMaps(object):
         else:
             return None
         
-        # eg:
-        # google_maps = GoogleMaps()
-        # google_maps.organize_info(1.3161811, 103.7649377)
-        # {'pincode': '120320', 'route': 'Clementi Avenue 4', 'neighborhood': 'Clementi', 
-        # 'formatted_address': '320 Clementi Ave 4, Block 320, Singapore 120320', 'street_number': '320'}
     
     def obtain_postcode(self, lat, lng, language=language):
         
