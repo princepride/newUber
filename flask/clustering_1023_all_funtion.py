@@ -17,11 +17,6 @@ def cluster_decision(p_des,hour,minute):
     num_Rows_Read = None
     taxi_stand = pd.read_csv('taxistop_SG_rename.csv', delimiter=',', nrows = num_Rows_Read)
         
-        # def __init__(self):
-        #     # self 
-        #     return None
-        #clean function
-        # def clean_null(df):#clean null rows
     def clean_null(df):#clean null rows
         df = df.dropna(how = 'any', axis = 'rows')
         return df
@@ -59,11 +54,6 @@ def cluster_decision(p_des,hour,minute):
     from sklearn.cluster import KMeans
         
     kmeans_jwd2 = KMeans(n_clusters=10, random_state=2).fit_predict(jwdnp)
-        # plt.scatter(jwdnp[:,1],jwdnp[:,0],c=kmeans_jwd2,cmap='tab10')
-        # plt.colorbar()
-    # plot_on_map(jwdnp,Bbox,map,s=50,alpha=1,c=kmeans_jwd2,dic=18)
-        
-        # print(metrics.calinski_harabasz_score(jwdnp,kmeans_jwd2))
         
         ############
         # change wrong clusters
@@ -82,9 +72,6 @@ def cluster_decision(p_des,hour,minute):
         # bukit timah
     taxi_stand.loc[taxi_stand['id']==1579304828,'cluster']=6
     taxi_stand.loc[taxi_stand['id']==3800199447,'cluster']=6
-        
-        # redraw clustering map
-    # plot_on_map(jwdnp,Bbox,map,s=50,alpha=1,c=taxi_stand['cluster'],dic=18)
         
         ############
         # put clusters into a bigger cluster
@@ -106,11 +93,7 @@ def cluster_decision(p_des,hour,minute):
     taxi_stand.loc[taxi_stand['cluster']==2,'direction']='Woodlands'
     taxi_stand.loc[taxi_stand['cluster']==3,'direction']='Joo Koon'
     taxi_stand.loc[taxi_stand['cluster']==4,'direction']='Changi Airport'
-    # plot_on_map(jwdnp,Bbox,map,s=50,alpha=1,c=taxi_stand['cluster'],dic=18)
-    
-    #     # save to csv
-    # path = 'cluster_result.csv'
-    # taxi_stand.to_csv(path,index=False)   
+ 
         ###########
         # load 26 destinations
         ###########
@@ -130,69 +113,6 @@ def cluster_decision(p_des,hour,minute):
         taxi_term.loc[taxi_term['id']==ida,'name']=namea
         taxi_term.loc[taxi_term['id']==ida,'cluster']=clua
          
-        
-    
-    
-        
-        ###########
-        # Virtual customer
-        ###########
-        
-        # # generate time from 17pm to 24pm
-        # list_time=[]
-        # for i in range(7*60):
-        #     list_time.append(i)
-        
-        # # generate destination
-        # list_destination=[]
-        # list_destination=taxi_stand['name'].tolist()
-        
-        # # generate all destination in different hour
-        # # numpy.random.randint(low, high=None, size=None, dtype=‘l')
-        # # np.random.randint(0, len(taxi_stand), size=len(taxi_stand))
-        # v=np.random.randint(0, len(taxi_stand), size=420).tolist()
-        # name_list=taxi_stand['name'].tolist()
-        # d=[]
-        # t=[]
-        # for i in range(len(v)):
-        #     d.append(name_list[v[i]])
-        #     t.append(i)
-            
-            
-        # #  generate 26 destination in different hour
-        # v_d=np.random.randint(0, len(taxi_term), size=420*len(taxi_term)).tolist()
-        # name_list_des=taxi_term['name'].tolist()
-        # d_d=[]
-        # t_d=[]
-        # for i in range(len(v_d)):
-        #     d_d.append(name_list_des[v_d[i]])
-        #     t_d.append(i//len(taxi_term))
-            
-        # # concat to new features
-        # user1 = pd.DataFrame(t, columns=['time'])
-        # user1['destination']=pd.DataFrame(d)
-        
-        # user2 = pd.DataFrame(t_d, columns=['time'])
-        # user2['destination']=pd.DataFrame(d_d)
-    
-        # user = pd.concat([user1,user2],axis=0)
-        
-        # # reset user set index and set name
-        # user = user.sort_values(by='time',ascending=True)
-        # user = user.reset_index(drop=True)
-        # user_list=user.index.values
-        # user['user id'] = pd.DataFrame(user_list)
-        
-        # # save virtual user dataset
-        # path = 'user_dataset.csv'
-        # user.to_csv(path,index=False)
-        
-        
-        
-        ############
-        # taxi share rules
-        ############
-        
     ########
     # import passenger
     ########
@@ -317,16 +237,7 @@ def cluster_decision(p_des,hour,minute):
     passenger_all_des=[p_des]+share
     return passenger_all_des
   
-    
-# ####js print result
-#     const cluster_decision_result=cluster_decision(p_des,hour,minute)
-#     console.log(
-#         "Dear user, you will share your trip with",cluster_decision_result[2],"other passengers in the direction of ",cluster_decision_result[1],
-#         "the destination will be",cluster_decision_result[0]
-#         );
-
-#     console.log("Number of taxi sharing passengers: "cluster_decision_result[2],"; Trip direction: ",cluster_decision_result[1],"; Trip destination: ",cluster_decision_result[0]);
-#     console.log("The route map is still under development");          
+             
 
 
         
