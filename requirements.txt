@@ -1,0 +1,8 @@
+flask_cors
+googlemaps
+chatterbot
+pandas
+matplotlib
+googleplaces
+PIL
+sklearn
