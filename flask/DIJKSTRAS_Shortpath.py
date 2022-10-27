@@ -22,18 +22,8 @@ def DIJKSTRAS_Shortpath(start_point,end_point):
   ########
   # 
   singapore_img = Image.open("./sg_route_map_background.png")
-  # df5 = pd.read_csv('C:\Users\lenovo\Desktop\ad_taxistop.csv',sep=',', encoding='latin-1')
-  # df5 = pd.read_csv( r"C:\Users\lenovo\Desktop\ad_taxistop.csv",sep=',', encoding='latin-1')
-  # df5 = pd.read_csv( r"C:\Users\lenovo\Desktop\ad_sg.csv",sep=',', encoding='latin-1')
   df5 = pd.read_csv( "./ad_sg.csv",sep=',', encoding='latin-1')
-  # df = pd.read_csv(r"C:\Users\lenovo\Desktop\terminal.csv", sep=',', encoding='latin-1')
   df = pd.read_csv("./terminal.csv", sep=',', encoding='latin-1')
-  #显示所有列
-  # pd.set_option('display.max_columns', None)
-  # #显示所有行
-  # pd.set_option('display.max_rows', None)
-  # df5.head(100)
-  # print(df5)
   str1=start_point
   str2=end_point
   index1 = df[df.name == str1].index.tolist()[0]  
@@ -43,64 +33,6 @@ def DIJKSTRAS_Shortpath(start_point,end_point):
   index4=start+end
   print(index4)
   ad=df5.values.tolist()
-
-  # ad[1][2]=1
-  # ad[1][9]=1
-  # ad[9][10]=1
-  # ad[2][4]=1
-  # ad[2][5]=1
-  # ad[3][4]=1
-  # ad[0][6]=1
-  # ad[6][7]=1
-  # ad[7][8]=1
-  # ad[8][11]=1
-  # ad[7][11]=1
-  # ad[11][12]=1
-  # ad[12][13]=1
-  # ad[12][16]=1
-  # ad[12][17]=1
-  # ad[12][14]=1
-  # ad[14][17]=1
-  # ad[17][20]=1
-  # ad[17][15]=1
-  # ad[15][20]=1
-  # ad[15][18]=1
-  # ad[15][19]=1
-  # ad[20][21]=1
-  # ad[14][21]=1
-  # ad[21][24]=1
-  # ad[21][23]=1
-  # ad[23][24]=1
-  # ad[24][25]=1
-  # ad[23][26]=1
-  # ad[14][22]=1
-  # ad[5][10]=1
-  # ad[2][9]=1
-  # ad[6][9]=1
-  # ad[8][14]=1
-  # ad[13][16]=1
-  # ad[16][17]=1
-  # ad[16][18]=1
-  # ad[18][19]=1
-  # ad[0][11]=1
-  # ad[11][14]=1
-  # ad[2][3]=1
-  # ad[4][5]=1
-  # ad[22][21]=1
-  # ad[22][23]=1
-  # ad[22][26]=1
-  # ad[25][26]=1
-  # ad[0][13]=1
-  # for i in range(len(ad)):
-  #   for j in range(len(ad)):
-  #       if (i!=j) &(ad[i][j]==1):
-  #         ad[j][i]=ad[i][j]
-  # df6=pd.DataFrame(ad)
-  # PATH=r'C:\Users\lenovo\Desktop\ad1.csv'
-  # df6.to_csv(path_or_buf=PATH, sep=',', na_rep='', float_format=None, columns=None, 
-  #               header=False, index=False, index_label=None, mode='w', encoding=None, 
-  #              compression=None, quoting=None, quotechar='"', line_terminator='\n', 
-  #             )
   ad_dist=ad
   distances=ad
   # print(ad)
@@ -147,12 +79,7 @@ def DIJKSTRAS_Shortpath(start_point,end_point):
   # # ————————————————
 
   ad_matrix=distances
-  # print(ad_matrix)
-  # for  i in range(6):
-  #     for j in range(6):
-  # 	    if ad_matrix[i][j] ==-1:
-  #               ad_matrix[i][j] =np.inf
-  # print(ad_matrix)
+
   def takeSecond(elem):
       return elem[1]
   rel=[]
@@ -229,8 +156,7 @@ def DIJKSTRAS_Shortpath(start_point,end_point):
   # use our map with it's bounding coordinates
   # 
   extent=[103.6804, 103.9986, 1.2613, 1.4023]
-  plt.imshow(singapore_img, extent=[103.6804, 103.9986, 1.2613, 1.4023], alpha=0.6,zorder=0) 
-  # plt.imshow(singapore_img, extent=[103.5,104,1.15, 1.50], alpha=0.5)           
+  plt.imshow(singapore_img, extent=[103.6804, 103.9986, 1.2613, 1.4023], alpha=0.6,zorder=0)          
   # add axis labels
   plt.ylabel("Latitude", fontsize=20)
   plt.xlabel("Longitude", fontsize=20)
