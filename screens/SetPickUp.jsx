@@ -91,7 +91,7 @@ const SetPickUp = ({ navigation }) => {
       />
       <View style={tw`p-1`}></View>
       <Button
-        style={tw`w-32 p-2`}
+        style={tw`w-32 pt-2`}
         theme={{ roundness: 50 }}
         mode="contained"
         onPress={() => handleClick()}
@@ -103,7 +103,6 @@ const SetPickUp = ({ navigation }) => {
       <Text style={tw`text-xl italic p-1`}>{str}</Text>
       </>),3000)} */}
             {showImage && <>
-      <View style={tw`p-2`}></View>
       {/*<Image style={tw`w-full h-40 p-1`} source={{uri:`data:image/png;base64, ${imagesrc}`}}></Image>*/}
       <View style={tw`w-full h-64 p-1`}>
       <ImageViewer imageUrls={[{url:`data:image/png;base64, ${imagesrc}`,}]} renderIndicator={(currentIndex, allSize) =>""}/>
@@ -117,6 +116,7 @@ const SetPickUp = ({ navigation }) => {
         {routeName[index]?.map((name)=>(<List.Item style={tw`left-4`} title={name} key={`item-${route}-${name}`} left={props => <List.Icon {...props} icon="arrow-down-thin-circle-outline" color="#9ddced"/>}/>))}
       </List.Accordion>))}
       </ScrollView>
+      <View style={tw`pb-8`}></View>
       </>}
     </SafeAreaView>
   )
