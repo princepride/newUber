@@ -1,5 +1,5 @@
 export const userProfile = 
     {
         name: 'Wang Zhipeng',
-        destination:'Queenstown',
+        destination:'OCBC Centre',
     }

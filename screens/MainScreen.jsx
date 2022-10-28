@@ -17,7 +17,7 @@ const MainScreen = () => {
       headerShown: false,
     })}
     >
-      {!login && <Stack.Screen name="Login" component={Login} />}
+      {/*{!login && <Stack.Screen name="Login" component={Login} />}*/}
       <Stack.Screen name="HomeTabs" component={HomeTabs} />
       <Stack.Screen name="SetPickUp" component={SetPickUp} />
       <Stack.Screen name="Register" component={Register} />

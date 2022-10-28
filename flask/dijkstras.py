@@ -4,7 +4,7 @@ from queue import PriorityQueue
 import matplotlib.pyplot as plt
 from PIL import Image
 
-def distance(x1, y1, x2, y2) :
+def getDistance(x1, y1, x2, y2) :
     return math.sqrt((x1 - x2)*(x1 - x2) + (y1-y2)* (y1-y2))
 
 def findDestinationIndex(str,destinations):
@@ -94,6 +94,13 @@ def distanceSort(route,distance,destinations):
         res.append(route[arr[i][1]])
     return res
 
+def getRouteName(route):
+    routeName = []
+    df = pd.read_csv("./cluster_result.csv", sep=',', encoding='latin-1')
+    for i in route:
+        routeName.append(df.name[i])
+    return routeName
+
 def dijikstrasDraw(route):
     distance = pd.read_csv("distance.csv",index_col=0).values.tolist()
     destinations = pd.read_csv("destinations.csv",index_col=0).values.tolist()
@@ -106,6 +113,11 @@ def dijikstrasDraw(route):
         l = dijkstras(startIndex, endIndex, distance)
         routePath += findPath(l)
     listX, listY = getXY(routePath)
-    return drawMap(listX,listY)
+    sumDistance = 0
+    for i in range(len(listX)-1):
+        sumDistance += getDistance(listX[i], listY[i], listX[i+1], listY[i+1])
+    routeName = getRouteName(routePath)
+    return drawMap(listX,listY),routeName,sumDistance*100,route
 if __name__ == '__main__':
-    dijikstrasDraw(['University town','Wisma Atria Shopping Centre','Aft Tg Katong Cplx'])
+    #dijikstrasDraw(['University town','Wisma Atria Shopping Centre','Aft Tg Katong Cplx'])
+    print(getRouteName([0]))

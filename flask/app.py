@@ -101,11 +101,24 @@ def map():
     route = cluster_decision(destination,hour,minute)
     route = ['University town']+list(set(route))
     print(route)
-    temp = dijikstrasDraw(route)
-    print(temp)
-    with open(temp, "rb") as image_file:
+    mapFilepath, routeName, sumDistance, route = dijikstrasDraw(route)
+    print(mapFilepath)
+    print(routeName)
+    temp = []
+    i = 1
+    j = 0
+    pre = 0
+    while i < len(route) and j < len(routeName):
+        if routeName[j] == route[i]:
+            temp.append(routeName[pre+2:j])
+            pre = j
+            i += 1
+            j += 1
+        else:
+            j += 1
+    with open(mapFilepath, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
-    return jsonify([encoded_string.decode('utf-8'),""])
+    return jsonify([encoded_string.decode('utf-8'),temp, sumDistance, route])
     # str = fun(destination,hour,minute)
     #cluster_decision_result=cluster_decision(destination,hour,minute)
     #print(len(cluster_decision_result))
