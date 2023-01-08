@@ -1,21 +1,3 @@
-<<<<<<< Updated upstream
-# newUber
- 
-## Install
-download [Node.js](https://nodejs.org/en/download/)  
-`$ npm install`  
-  
-download [python3.6](https://www.python.org/downloads/release/python-360/)  
-`$ pip install -r requirements.txt`  
-
-## Error and Solution  
-In file:.\lib\site-packages\chatterbot\tagging.py  
-**Change** `yaml.load()` **to** `yaml.safe_load() `  
-  
-**Change** `self.nlp = spacy.load(self.language.ISO_639_1.lower())` **to**
-`if self.language.ISO_639_1.lower() == 'en': self.nlp = spacy.load('en_core_web_sm')  `
-`else: self.nlp = spacy.load(self.language.ISO_639_1.lower())`
-=======
 # ~~NewUber~~Cyber Share
 
 ## Introduction
@@ -64,4 +46,3 @@ This project use the K-means algorithm to cluster more than 400 stations in Sing
 There are also a chatbots to answer customers questions, trained using the Bert pre-trained model, If you want to know more about the details of this Neural Networks, you can refer to this paper:
 
 [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
->>>>>>> Stashed changes
